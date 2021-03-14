@@ -17,10 +17,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clickSearch($event: MouseEvent): void {
+  clickSearch($event: KeyboardEvent | MouseEvent): void {
     this.highlight = !this.highlight;
     this.fontSize++;
-    console.log(this.highlight);
+    console.log($event);
     this.searchEvent.emit(this.search);
   }
 

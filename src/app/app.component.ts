@@ -10,7 +10,7 @@ import { Article } from './Article';
 export class AppComponent implements OnInit {
   title = 'New Title';
   subTitle = 'A place to share your <u>knowledge</u>.';
-
+  keyword = '';
   list: Article[] = [];
 
   constructor(private articleService: ArticleService) { }
@@ -22,9 +22,5 @@ export class AppComponent implements OnInit {
           this.list = data.articles;
         }
       });
-  }
-
-  doSearch(search: string): void {
-    this.list = this.articleService.doSearch(search);
   }
 }
