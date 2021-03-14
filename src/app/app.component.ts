@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Article } from './Article';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ export class AppComponent {
   title = 'New Title';
   subTitle = 'A place to share your <u>knowledge</u>.';
 
-  rawList = [
+  rawList: Article[] = [
     {
       title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
       slug: 'zp7yqc',
@@ -63,10 +64,10 @@ export class AppComponent {
     }
   ];
 
-  list: any[] = [];
-  doSearch(search: any): void {
+  list: Article[] = [].concat(this.rawList);
+  doSearch(search: string): void {
     this.list.length = 0;
-    this.rawList.forEach((element: { title: string | any[]; }) => {
+    this.rawList.forEach((element: Article) => {
       if (element.title.indexOf(search) >= 0) {
         this.list.push(element);
       }
