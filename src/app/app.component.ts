@@ -11,12 +11,17 @@ export class AppComponent implements OnInit {
   title = 'New Title';
   subTitle = 'A place to share your <u>knowledge</u>.';
 
-  list: Article[];
+  list: Article[] = [];
 
-  constructor(private articleService: ArticleService) {
-  }
+  constructor(private articleService: ArticleService) { }
+
   ngOnInit(): void {
-    this.list = this.articleService.getRawList();
+    this.articleService.fetchData()
+      .subscribe({
+        next: (data) => {
+          this.list = data.articles;
+        }
+      });
   }
 
   doSearch(search: string): void {
