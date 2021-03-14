@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() searchEvent = new EventEmitter<string>();
   search = '';
   highlight = false;
   fontSize = 12;
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
     this.highlight = !this.highlight;
     this.fontSize++;
     console.log(this.highlight);
+    this.searchEvent.emit(this.search);
   }
 
 }
