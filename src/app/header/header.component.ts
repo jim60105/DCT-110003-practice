@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   search = '';
+  highlight = false;
+  fontSize = 12;
 
   constructor() { }
 
@@ -15,7 +17,9 @@ export class HeaderComponent implements OnInit {
   }
 
   clickSearch($event: MouseEvent): void {
-    console.log($event);
+    this.highlight = !this.highlight;
+    this.fontSize++;
+    console.log(this.highlight);
   }
 
 }
