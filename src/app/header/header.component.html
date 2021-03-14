@@ -4,6 +4,12 @@
         <input class="form-control form-control-sm search-input" type="text" placeholder="Keyword" [(ngModel)]="search" />
         <button class="btn btn-sm btn-primary" (click)="clickSearch($event)">
           <i class="ion-search"></i>
-        </button> {{search}}
+        </button>
+        <ng-container *ngIf="search == ''; else displaySearchString">
+            請輸入文字
+        </ng-container>
+        <ng-template #displaySearchString>
+            {{search}}
+        </ng-template>
     </div>
 </nav>
